@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+	<title>Favorite Restaurants</title>
+	<meta charset="utf8">
+</head>
+<body>
+
+<script>
+
+var food = confirm('Do you want to eat at a restaurant?');
+if (food) {
+	var typeOfFood = prompt("Thai, Lao, French, Italian, Korean, Steak, Vegetarian?");
+	typeOfFood = typeOfFood.toLowerCase();
+	if (typeOfFood == "thai" || typeOfFood == "lao") {
+		console.log("Vienthong Restaurant");
+	} else if (typeOfFood == "french") {
+		console.log("Maximilien");
+	} else if (typeOfFood == "italian") {
+		console.log("tulio");
+	} else if (typeOfFood == "korean") {
+		console.log("Palace BBQ");
+	} else if (typeOfFood == "steak") {
+		console.log("Metropolitan Grill");
+	} else if (typeOfFood == "vegetarian") {
+		console.log("Bamboo Garden");
+	} else {
+		console.log("Trader Joe's");
+	}
+	/* Assignment #2 - Choose Your Own Adventure
+
+This week, we learn about conditional statements: the ability for your code to make decisions based on the state of its variables, perhaps one of the most fundamental capabilities a computer has. To commemorate this milestone, we'll write a primitive Choose Your Own Adventure story like it's 1988.
+
+Using the console.log, prompt(), and confirm functions, write a simple interactive text adventure with at least four different endings (i.e., two branches each leading to two more branches). At least one choice should require inputting a number and comparing it to one or more other numeric values, and at least one choice should use a boolean.
+
+Your script can cover any situation imaginable, and does not have to be fiction. Suggestions include:
+
+A guide to restaurants in your neighborhood
+An interactive how-to for some DIY project
+A troubleshooting process for a machine or program
+The world's shortest spy novel*/
+
+
+	/*
+	switch (typeOfFood) {
+		case "dog":
+		case "mongolian deer":
+			console.log("Very fat pony");
+			break;
+		
+		case "cat":
+		case "gorilla":
+			console.log("Marmoset");
+			break;
+		
+		default:
+			console.log("Chinchilla");
+	}
+	*/
+} else {
+	var cook = prompt("Since you don't want to eat at a restaurant, how many dishes do you want to cook?");
+	cook = Number(cook);
+	if (cook >= 2 && cook <= 5) {
+		console.log("Let's start with a main dish and a dessert");
+	} else if (cook > 5) {
+		console.log("No more!");
+	} else {
+		console.log("Okay");
+	}
+
+}
+</script>
+</body>
+</html>
+
+
+
+
