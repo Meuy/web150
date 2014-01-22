@@ -7,26 +7,6 @@
 <body>
 
 <script>
-
-var food = confirm('Do you want to eat at a restaurant?');
-if (food) {
-	var typeOfFood = prompt("Thai, Lao, French, Italian, Korean, Steak, Vegetarian?");
-	typeOfFood = typeOfFood.toLowerCase();
-	if (typeOfFood == "thai" || typeOfFood == "lao") {
-		console.log("Vienthong Restaurant");
-	} else if (typeOfFood == "french") {
-		console.log("Maximilien");
-	} else if (typeOfFood == "italian") {
-		console.log("tulio");
-	} else if (typeOfFood == "korean") {
-		console.log("Palace BBQ");
-	} else if (typeOfFood == "steak") {
-		console.log("Metropolitan Grill");
-	} else if (typeOfFood == "vegetarian") {
-		console.log("Bamboo Garden");
-	} else {
-		console.log("Trader Joe's");
-	}
 	/* Assignment #2 - Choose Your Own Adventure
 
 This week, we learn about conditional statements: the ability for your code to make decisions based on the state of its variables, perhaps one of the most fundamental capabilities a computer has. To commemorate this milestone, we'll write a primitive Choose Your Own Adventure story like it's 1988.
@@ -41,34 +21,72 @@ A troubleshooting process for a machine or program
 The world's shortest spy novel*/
 
 
-	/*
-	switch (typeOfFood) {
-		case "dog":
-		case "mongolian deer":
-			console.log("Very fat pony");
-			break;
-		
-		case "cat":
-		case "gorilla":
-			console.log("Marmoset");
-			break;
-		
-		default:
-			console.log("Chinchilla");
-	}
-	*/
-} else {
-	var cook = prompt("Since you don't want to eat at a restaurant, how many dishes do you want to cook?");
-	cook = Number(cook);
-	if (cook >= 2 && cook <= 5) {
-		console.log("Let's start with a main dish and a dessert");
-	} else if (cook > 5) {
-		console.log("No more!");
+var food = confirm('Do you want to eat at a restaurant?');
+if (food) {
+	var typeOfFood = prompt("Thai, Lao, French, Italian, Korean, Steak, Vegetarian?");
+	typeOfFood = typeOfFood.toLowerCase();
+	if (typeOfFood == "thai" || typeOfFood == "lao") {
+		console.log("Vienthong Restaurant");
+	} else if (typeOfFood == "french") {
+		console.log("Maximilien");
+	} else if (typeOfFood == "italian") {
+		console.log("Tulio");
+	} else if (typeOfFood == "korean") {
+		console.log("Palace BBQ");
+	} else if (typeOfFood == "steak") {
+		console.log("Metropolitan Grill");
+	} else if (typeOfFood == "vegetarian") {
+		console.log("Bamboo Garden");
 	} else {
-		console.log("Okay");
+		console.log("Try Trader Joe's");
 	}
 
+
 }
+
+	var cook = prompt("How many persons do you cook for per meal?");
+	cook = Number(cook);
+	if (cook >= 2 && cook <= 6) {
+		console.log("Let's start with a main dish and a dessert. Recipes.com has lots of recipes");
+	} else if (cook >= 7 && cook <=10) {
+		console.log("Get help with the dishes! Go to recipes.com for recipes!");
+	} else if (cook >= 11) {
+		console.log("Call a caterer!");
+	} else {
+		console.log("Try a restaurant");
+	}
+
+
+	var run = confirm('Do you like to run?');
+if (run) {
+	var destination = prompt("Do you like to run in the cold, rain, sun, snow, or fog?");
+	destination = destination.toLowerCase();
+	if (destination == "cold" || destination == "rain") {
+		console.log("Seattle");
+	} else if (destination == "sun") {
+		console.log("Hawaii");
+	} else if (destination == "snow") {
+		console.log("Antarctica");
+	} else if (destination == "fog") {
+		console.log("San Francisco");
+	}
+	
+
+} else {
+	var places = prompt("How many places have you travelled to?");
+	places = Number(places);
+	if (places >= 2 && places <= 6) {
+		console.log("Cool!");
+	} else if (places >= 7 && places <=10) {
+		console.log("Wow!");
+	} else if (places >= 11) {
+		console.log("That's Awesome!");
+	} else {
+		console.log("What!");
+	}
+}
+	
+
 </script>
 </body>
 </html>
