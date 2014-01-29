@@ -60,19 +60,19 @@ var countriesTotal = expenditures.length;
 for (var i = 0; i < expenditures.length; i++) {
 
 var countries = expenditures[i];
-amountTotal += amountTotal + countries.amount;
+amountTotal += Number(countries.amount);
 countriesTotal += countries.country;
 
 }
 
 var amountCount = 0;
 for (var i = 0; i < expenditures.length; i++) {
-	if (expenditures[i].amount > 0) {
-		amountCount++;
-	}
+	
+
+	
 }
 //find an average: divide total by the number of items
-console.log("Average military expenditure amount: " + amountTotal / amountCount);
+console.log("Average military expenditure amount: " + amountTotal / expenditures.length);
 
 
 //
