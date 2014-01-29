@@ -31,19 +31,21 @@ If you like a little bit of additional challenge, the following questions are op
 
 <script src="http://thomaswilburn.net/sccc/data/expenditures.js"></script>
 <script>
-
+//highest amount
 var highest = { amount: 0 };
-var lowest = { amount: 0 };
-
 for (var i = 0; i < expenditures.length; i++) {
 	var gdp = expenditures[i];
 	if (gdp.amount > highest.amount) {
 		highest = gdp;
-	}
+	}}
+	
+//lowest amount	
+var lowest = { amount: 100 };
+for (var i = 0; i < expenditures.length; i++) {
+	var gdp = expenditures[i];
 	if (gdp.amount < lowest.amount) {
 		lowest = gdp;
-	}
-}
+	}}
 
 
 
