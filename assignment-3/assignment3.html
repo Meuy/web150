@@ -49,29 +49,21 @@ for (var i = 0; i < expenditures.length; i++) {
 
 
 
-console.log("The country with the highest expenditure is " + highest.country, highest.amount);
-console.log("The country with the lowest expenditure is " + lowest.country, lowest.amount);
 
-console.log("# of countries: " + expenditures.length);
-
-//
-console.log ("The country with the lowest expenditure should be Iceland" );
-console.log ("The average expenditure should be 1.93448");
 
 //CONVERT STRING TO NUMBER
-
+//GET AVERAGE
 
 var amountTotal = 0;
-
-
 var countriesTotal = expenditures.length;
 
-//for each movie,
 for (var i = 0; i < expenditures.length; i++) {
-	//add the amount to the running total
-}
 
-console.log("Total GDP amount: $" + amountTotal);
+var countries = expenditures[i];
+amountTotal += amountTotal + countries.amount;
+countriesTotal += countries.country;
+
+}
 
 var amountCount = 0;
 for (var i = 0; i < expenditures.length; i++) {
@@ -81,6 +73,18 @@ for (var i = 0; i < expenditures.length; i++) {
 }
 //find an average: divide total by the number of items
 console.log("Average military expenditure amount: " + amountTotal / amountCount);
+
+
+//
+
+console.log("The country with the highest expenditure is " + highest.country, highest.amount);
+console.log("The country with the lowest expenditure is " + lowest.country, lowest.amount);
+
+console.log("# of countries: " + expenditures.length);
+
+//
+
+console.log ("The average expenditure should be 1.93448");
 
 </script>
 </body>
