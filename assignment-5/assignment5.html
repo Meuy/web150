@@ -1,17 +1,92 @@
 <!doctype html>
 <html>
 <head>
-	<title>Title</title>
-	<meta charset="utf8">
+<title>Hawaii April 2012</title>
+<meta charset="utf8">
+<style>
+
+.thumbs { padding: 0; margin: 0; background: black;}
+.thumbs li { 
+	display: inline-block;
+	border: 1px solid black;
+	border-radius: 2px 1px 0 0;
+	padding: 2px 12px;
+	background: black;
+}
+.thumbs li.active {
+	background: black;
+	border-bottom: 4px solid white;
+}
+.thumb { height: 680px; background: black; font-size: 32px; }
+	</style>
 </head>
 <body>
 
-<script>
+	<ul class="thumbs">
+	<li> <a href="#zero"><img alt="Sail" src="0s.jpg"/></a> </li>
+		<li> <a href="#one"><img alt="Whale Swim" src="1s.jpg"/></a> </li>
+		<li> <a href="#two"><img alt="Whale Dive" src="2s.jpg"/></a> </li>
+		<li> <a href="#three"><img alt="Hawaii" src="3s.jpg"/></a> </li>
+		<li> <a href="#four"><img alt="Balloon Drop" src="4s.jpg"/></a> </li>
+		<li> <a href="#five"><img alt="Dinner" src="5s.jpg"/></a> </li>
+	</ul>
+	<div class="thumb" id="zero">
+		<img alt="Sail" src="0.jpg"/>
+	</div>
+	<div class="thumb" id="one">
+		<img alt="Whale Swim" src="1.jpg"/>
+	</div>
 
-</script>
+	<div class="thumb" id="two">
+		<img alt="Whale Dive" src="2.jpg"/>
+	</div>
+
+	<div class="thumb" id="three">
+		<img alt="Hawaii" src="3.jpg"/>
+	</div>
+	<div class="thumb" id="four">
+		<img alt="Balloon Drop" src="4.jpg"/>
+	</div>
+	<div class="thumb" id="five">
+		<img alt="Dinner" src="5.jpg"/>
+	</div>
+	<script src="http://code.jquery.com/jquery-2.1.0.min.js">
+	</script>
+
+	<script>
+
+//find the elements we want to monitor for events
+var thumbLinks = $(".thumbs a");
+thumbLinks.on("click", function(e) {
+	//hide current tab
+	$(".thumb:visible").hide();
+	//get the <a> that was clicked
+	var $this = $(this);
+	//get its href value
+	var href = $this.attr("href");
+	//find the thumb with that value
+	var thumb = $(href);
+	//show it
+	thumb.fadeIn();
+	//cancel the navigation
+	e.preventDefault();
+	//remove any .active classes on the page
+	$(".active").removeClass("active");
+	//find the <li> tag that was clicked
+	var li = $this.closest("li");
+	//add the active class to it
+	li.addClass("active");
+});
+
+//$(".thumb").not(":first").hide();
+var firstTab = thumbLinks.filter(":first");
+firstTab.click(); //.trigger("click");
+
+	</script>
+<!-- Assignment #5 - Boy Meets Gallery
+
+add "next" and "previous" buttons.
+
+ -->
 </body>
 </html>
-
-
-
-
