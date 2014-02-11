@@ -1,0 +1,37 @@
+<!doctype html> 
+<html> 
+<head> 
+<style> 
+/* YOUR STYLES HERE */ 
+</style> 
+</head> 
+<body> 
+<ul class="tabs"> 
+<li> 
+<a href="#one">One</a> 
+<li> 
+<a href="#two">Two</a> 
+<li> 
+<a href="#three">Three</a> 
+</ul> 
+
+<div class="tab" id="one">First tab</div> 
+<div class="tab" id="two">Second tab</div> 
+
+<div class="tab" id="three">Third tab</div> 
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> 
+<script> 
+var clickedPic = function() { 
+var $pic = $(pic); 
+$('ul.tabs .active').removeClass('active'); $pic.closest('li').addClass('active'); 
+//highlight current item var href = $pic.attr('href'); 
+//get the href attribute 
+var tab = $(href); 
+//find the tab by ID 
+$('.tab').hide(); tab.show(); 
+}
+; 
+$('ul.tabs a').on('click', clickedPic); $('ul.tabs a:first').trigger('click'); 
+</script> 
+</body> 
+</html>

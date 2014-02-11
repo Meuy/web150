@@ -58,9 +58,9 @@
 //find the elements we want to monitor for events
 var thumbLinks = $(".thumbs a");
 thumbLinks.on("click", function(e) {
-	//hide current tab
+	//hide visible thumbnail
 	$(".thumb:visible").hide();
-	//get the <a> that was clicked
+	//get the image that was clicked
 	var $this = $(this);
 	//get its href value
 	var href = $this.attr("href");
@@ -79,8 +79,8 @@ thumbLinks.on("click", function(e) {
 });
 
 //$(".thumb").not(":first").hide();
-var firstTab = thumbLinks.filter(":first");
-firstTab.click(); //.trigger("click");
+var firstThumb = thumbLinks.filter(":first");
+firstThumb.click(); //.trigger("click");
 
 	</script>
 <!-- Assignment #5 - Boy Meets Gallery
