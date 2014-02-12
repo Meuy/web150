@@ -92,7 +92,125 @@
   
   //8. Find the span with a class of animal, and change its text to read "vegetable"
 $("span.animal").text("vegetable");
+<<<<<<< HEAD
+=======
 
+
+  
+  //9. Find all tags with a class of "internal" and remove that class
+  var internal;
+var internal = $(".internal");
+  internal.removeClass("internal");
+
+  //10. Find all ordered lists on the page, and add the class "finished"
+$("ol").addClass ("finished");
+  
+  
+  </script>
+  
+  <script>
+  //ERROR-CHECKING SCRIPT
+  
+  var selectors = {
+    tags: "bGk=",
+    classes: "LndlYjE1MA==",
+    ids: "I3NwZWNpYWw=",
+    children: "I2FydGljbGUgLmV4dGVybmFs",
+    closest: "I2FydGljbGU=",
+    first: "dWw=",
+    odd: "c3BhbjpudGgtY2hpbGQoMm4tMSk=",
+    html: "LmFuaW1hbA==",
+    add: "b2w=",
+    remove: "LmludGVybmFs"
+  };
+  
+  var qsa = document.querySelectorAll.bind(document);
+  var where = function(test) {
+    test = selectors[test] || test;
+    test = atob(test);
+    var d = $(test);
+    return [].slice.call(qsa(test));
+  }
+  
+  var match = function(a, b) {
+    if (!a || !b) return false;
+    if (a.length != b.length) return false;
+    for (var i = 0; i < a.length; i++) {
+      if (a[i] != b[i]) {
+        return false;
+      }
+    }
+    return true;
+  };
+  
+  var simple = function(v, t) { 
+    if (typeof v == "string") {
+      t = v;
+      v = window[t];
+    }
+    return match.bind(null, v, where(t));
+  };
+  
+  var tests = {
+    sample: function() { return body && body.selector == "body" },
+    tags: simple(li, "tags"),
+    classes: simple("classes"),
+    ids: simple(special, "ids"),
+    children: simple("children"),
+    closest: simple("closest"),
+    first: function() { return where("first")[0].style.color == "green" },
+    odd: function() { return !(where("odd").filter(function(d) { return d.style.display !== "none" }).length) },
+    html: function() { return where("html")[0].innerHTML == "vegetable" },
+    add: function() { return where("add").filter(function(d) { return d.className.indexOf("finished") > -1 }).length },
+    remove: function() { return !where("remove").length }
+  };
+  
+  var checkQueries = function() {
+    for (var id in tests) {
+      var test = tests[id];
+      var result = test();
+      if (console && console.log) console.log(id, result);
+      document.querySelector("#" + id).className = result ? "pass" : "fail"
+    }
+  };
+  
+  window.addEventListener("load", function() {
+    setTimeout(checkQueries, 500);
+  });
+  </script>
+  <style>
+    .instructions {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 200px;
+      font-size: 12px;
+      background: rgba(255, 255, 255, .9);
+    }
+    
+    .instructions ol {
+      padding: 0;
+      list-style-position: inside;
+    }
+    
+    #article {
+      width: 500px;
+      margin: auto;
+    }
+    
+    .pass {
+      list-style-type: disc;
+      color: green;
+    }
+    .fail {
+      list-style-type: circle;
+      color: red;
+    }
+  </style>
+>>>>>>> ce64c7ed9d8322fb357bd4b5e80a1b7b8d08d5a8
+
+</body>
+</html>
 
   
   //9. Find all tags with a class of "internal" and remove that class

@@ -5,80 +5,61 @@
 <meta charset=utf8>
 </head>
 <body>
-/*
-Assignment #3 - Around the World
-
-Having learned about loops and arrays, we're going to process some data for this week's assignment. Our source is the World Bank, which tracks a number of indicators for countries around the globe. In this case, including this script in your page will create a variable named expenditures for you, containing the military expenditures as a percentage of GDP for most countries in 2012. The variable is an array full of objects, each of which contains an amount and a country, like so: var expenditures = [ { "amount": "9.43291162", "country": "South Sudan" }, { "amount": "8.607026797", "country": "Oman" }, { "amount": "7.977502554", "country": "Saudi Arabia" }, { "amount": "5.688140814", "country": "Israel" }...
-
-For your homework, using loops to process these objects, answer the following questions about the data:
-
-    What's the country with the highest expenditures?
-    What's the country with the lowest?
-    What is the average military expenditure rate? 
-
-If you like a little bit of additional challenge, the following questions are optional but interesting:
-
-    How many countries spend more than 5% of GDP on their military?
-    How many countries spend less than 1%?
-    What is the average expenditures just for North America (Canada, the US, and Mexico)?
-    If we exclude North America, how does the average expenditure change? 
-*/
-
-	
-//code goes here
-//var expenditures, amount, country
 
 
 <script src="http://thomaswilburn.net/sccc/data/expenditures.js"></script>
 <script>
-
+//highest amount
 var highest = { amount: 0 };
-var lowest = { amount: 0 };
-
 for (var i = 0; i < expenditures.length; i++) {
 	var gdp = expenditures[i];
 	if (gdp.amount > highest.amount) {
 		highest = gdp;
-	}
+	}}
+	
+//lowest amount	
+var lowest = { amount: 100 };
+for (var i = 0; i < expenditures.length; i++) {
+	var gdp = expenditures[i];
 	if (gdp.amount < lowest.amount) {
 		lowest = gdp;
-	}
-}
+	}}
 
 
 
-console.log("The country with the highest expenditure is " + highest.country, highest.amount);
-console.log("The country with the lowest expenditure is " + lowest.country, lowest.amount);
 
-console.log("# of countries: " + expenditures.length);
-
-//
-console.log ("The country with the lowest expenditure should be Iceland" );
-console.log ("The average expenditure should be 1.93448");
 
 //CONVERT STRING TO NUMBER
-
+//GET AVERAGE
 
 var amountTotal = 0;
-
-
 var countriesTotal = expenditures.length;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ce64c7ed9d8322fb357bd4b5e80a1b7b8d08d5a8
 for (var i = 0; i < expenditures.length; i++) {
-	//add the amount to the running total
-}
 
-console.log("Total GDP amount: $" + amountTotal);
+var countries = expenditures[i];
+amountTotal += Number(countries.amount);
+countriesTotal += countries.country;
+
+}
 
 var amountCount = 0;
 for (var i = 0; i < expenditures.length; i++) {
-	if (expenditures[i].amount > 0) {
-		amountCount++;
-	}
+	
+
+	
 }
-//find an average: divide total by the number of items
-console.log("Average military expenditure amount: " + amountTotal / amountCount);
+
+console.log("The country with the highest expenditure is " + highest.country, highest.amount);
+console.log("The country with the lowest expenditure is " + lowest.country, lowest.amount);
+console.log("Average military expenditure amount: " + amountTotal / expenditures.length);
+console.log("# of countries: " + expenditures.length);
+
+
 
 </script>
 </body>
