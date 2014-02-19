@@ -86,8 +86,9 @@ assert( findTotal(samples) == 15, "Function found the correct total");
 //6. BONUS: Using the idea of functions as objects, update `identity` so
 //that it calls the function that is passed in, and returns its value.
 var testFunction = function() { return "This value should pass through " };
-var identity = function() {};
-
+var identity = function(update) {
+return update();
+};
 assert( identity(testFunction) == testFunction(), "(bonus) Identity function should call its argument");
 
 //7. BONUS: Combining loops and functions, you never have to write a loop
