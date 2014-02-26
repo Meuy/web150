@@ -1,17 +1,122 @@
 <!doctype html>
 <html>
 <head>
-	<title>Title</title>
-	<meta charset="utf8">
+<title> Paint Shop </title>
+<meta charset="utf-8">
+<style>
+canvas {display:block;}
+</style>
 </head>
 <body>
+	<button class ="shape" data-shape="spray">Spray</button>
+	<button class ="shape" data-shape="square">Square</button>
+	<button class="shape" data-shape = "circle">Circle</button>
+	<button class ="size" data-size="10">Small</button>
+	<button class="size" data-size = "20">Medium</button>
+	<button class="size" data-size = "30">Large</button>
+	<button class="color" data-color = "black">Black</button>
+	<button class="color" data-color = "red">Red</button>
+	<button class="color" data-color = "blue">Blue</button>
+	<button class="color" data-color = "pink">Pink</button>
+	<button class="color" data-color = "purple">Purple</button>
+	<button class="color" data-color = "yellow">Yellow</button>
+	<button class="color" data-color = "green">Green</button>
+	<button class="color" data-color = "white">White</button>
 
+
+<canvas id="canvas" width="500" height="300"></canvas>
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script>
+
+var canvas = document.getElementById("canvas");
+var context = canvas.getContext("2d");
+var $canvas = $(canvas);
+var density = 20;
+var brush = {
+active: false,
+shape: "square",
+size:20,
+color: "black", 
+};
+
+$canvas.on("mousemove", function(e){
+	var offset = $canvas.offset();
+	var x = e.pageX - offset.left;
+	var y = e.pageY - offset.top;
+	if (brush.active){
+	context.fillStyle = brush.color;
+	if (brush.shape == "circle"){
+	drawCircle(x, y, brush.size);} 
+	else if (brush.shape == "square"){
+	drawRect(x, y, brush.size);
+	}
+	else if (brush.shape == "spray"){
+	drawSpray(x, y, brush.size);} 
+	};	
+}); 
+
+
+///////////////////////////////////
+canvas.onmousemove = function(e) {
+  if (brush) {
+    for (var i = density; i--; ) {
+      var radius = 20;
+      var offsetX = getRandomInt(-radius, radius);
+      var offsetY = getRandomInt(-radius, radius);
+      context.fillRect(e.clientX + offsetX, e.clientY + offsetY, 1, 1);
+    }
+  }
+};
+
+/////////////////////////
+
+
+$canvas.on("mousedown mouseup", function(e) {
+brush.active = e.type == "mousedown";
+}
+);
+
+var colors = $(".color");
+colors.on("click", function(){
+var $this = $(this);
+var color = $this.attr("data-color");
+brush.color = color;
+});
+
+var shapes = $(".shape");
+shapes.on("click", function(){
+	var $this = $(this);
+	var shape = $this.attr("data-shape");
+	brush.shape = shape;
+});
+
+var sizes = $(".size");
+sizes.on("click", function(){
+var $this = $(this);
+var size = $this.attr("data-size");
+brush.size = size;
+});
+
+var drawRect = function(x,y, size){
+	context.fillRect(x-size/2, y-size / 2, size, size)
+};
+
+var drawCircle = function(x, y, size){
+	context.beginPath();
+	context.arc(x, y, size/2, 0, 2*Math.PI);
+	context.fill();
+};
+
+var drawSpray = function(x, y, size){
+
+};
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 </script>
 </body>
 </html>
-
-
 
 
