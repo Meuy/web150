@@ -32,6 +32,7 @@ var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
 var $canvas = $(canvas);
 var density = 60;
+var radius = 20;
 var brush = {
 active: false,
 shape: "square",
@@ -58,9 +59,9 @@ $canvas.on("mousemove", function(e){
 
 ///////////////////////////////////
 canvas.onmousemove = function(e) {
-  if (brush) {
+  if (brush.active) {
     for (var i = density; i--; ) {
-      var radius = 20;
+      
       var offsetX = getSpray(-radius, radius);
       var offsetY = getSpray(-radius, radius);
       context.fillRect(e.clientX + offsetX, e.clientY + offsetY, 1, 1);
