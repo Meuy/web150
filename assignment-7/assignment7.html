@@ -52,24 +52,13 @@ $canvas.on("mousemove", function(e){
 	drawRect(x, y, brush.size);
 	}
 	else if (brush.shape == "spray"){
-	getSpray(x, y, brush.size);} 
+	drawSpray(x, y, brush.size);} 
 	};	
 }); 
 
 
-///////////////////////////////////
-canvas.onmousemove = function(e) {
-  if (brush.active) {
-    for (var i = density; i--; ) {
-      
-      var offsetX = getSpray(-radius, radius);
-      var offsetY = getSpray(-radius, radius);
-      context.fillRect(e.clientX + offsetX, e.clientY + offsetY, 1, 1);
-    }
-  }
-};
 
-/////////////////////////
+
 
 
 $canvas.on("mousedown mouseup", function(e) {
@@ -108,10 +97,19 @@ var drawCircle = function(x, y, size){
 	context.fill();
 };
 
-
-
-function getSpray(min, max) {
+var drawSpray = function(x, y, size){
+  for (var i = density; i--; ) {
+      
+      var offsetX = getSpray(-radius, radius);
+      var offsetY = getSpray(-radius, radius);
+      context.fillRect(e.clientX + offsetX, e.clientY + offsetY, 1, 1);
+    }
+	function getSpray(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+
+
 }
 
 </script>
