@@ -17,21 +17,23 @@ button {
     border: 3px solid #black;
 	background: blue;
 	color: gold;
+	text-align: center;
 }
 #ball {
-width: 200px;
-height: 200px;
-border-radius: 500px;
-background: black;}
-</style>
+	width: 200px;
+	height: 200px;
+	border-radius: 500px;
+	background: black;
 
+}
+</style>
 
 
 
   
  <h1> Magic 8 Ball Fortune Teller</h1>
  <div id="ball">
-<button id="findFortune">Ask me a question and click to see my reply	</button>
+<button id="findFortune">Click to see your fortune	</button>
 
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"/></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -47,7 +49,7 @@ var fortune = $("<div></div>");
 request.done(function(data) {	
 fortune.html(data.answer);
 body.append(fortune);
-fortune.effect( "shake" ).show().fadeOut(1000);
+fortune.effect( "shake" ).show().fadeOut();
 });};
 
 
