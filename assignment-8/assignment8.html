@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Magic 8 Ball</title>
+    <meta charset="utf8">
+  </head>
+  <body>
+<style>
+
+button {
+	position: relative;
+	left:50px;
+	top: 50px;
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+    border: 3px solid #black;
+	background: blue;
+	color: gold;
+}
+#ball {
+width: 200px;
+height: 200px;
+border-radius: 500px;
+background: black;}
+</style>
+
+
+
+
+  
+ <h1> Magic 8 Ball Fortune Teller</h1>
+ <div id="ball">
+<button id="findFortune">Ask me a question and click to see my reply	</button>
+
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"/></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script>
+var getMagic = function() {
+var request = $.ajax({
+		url: "http://thomaswilburn.net:8080/magic8",
+		dataType: "jsonp",
+});
+var body = $("body");
+
+var fortune = $("<div></div>");
+request.done(function(data) {	
+fortune.html(data.answer);
+body.append(fortune);
+fortune.effect( "shake" ).show().fadeOut(1000);
+});};
+
+
+var findFortune = $("#findFortune");
+findFortune.on("click", function() {
+	var value = $("answer").val();
+	getMagic(value);
+	$( "#ball" ).effect( "shake" );
+});
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</div>
+  </body>
+</html>
+
+
+
+
+
+
