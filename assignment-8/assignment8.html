@@ -8,36 +8,29 @@
 <style>
 
 button {
-	position: relative;
-	left:50px;
-	top: 50px;
+
     height: 100px;
     width: 100px;
     border-radius: 100px;
-    border: 3px solid #black;
-	background: blue;
-	color: gold;
+   	background: black;
+	color: white;
 	text-align: center;
 }
-#ball {
-	width: 200px;
-	height: 200px;
-	border-radius: 500px;
-	background: black;
 
-}
 </style>
 
 
 
   
  <h1> Magic 8 Ball Fortune Teller</h1>
+ <h2>Click to see your fortune</h2>
  <div id="ball">
-<button id="findFortune">Click to see your fortune	</button>
+<button id="findFortune"></button>
 
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"/></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script>
+
 var getMagic = function() {
 var request = $.ajax({
 		url: "http://thomaswilburn.net:8080/magic8",
@@ -45,14 +38,15 @@ var request = $.ajax({
 });
 var body = $("body");
 
-var fortune = $("<div></div>");
+var fortune = $(findFortune);
 request.done(function(data) {	
 fortune.html(data.answer);
 body.append(fortune);
-fortune.effect( "shake" ).show().fadeOut();
-});};
+fortune.effect( "shake" ).show();
+});
+};
 
-
+//button
 var findFortune = $("#findFortune");
 findFortune.on("click", function() {
 	var value = $("answer").val();
