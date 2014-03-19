@@ -10,20 +10,111 @@
 <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
 
 	<link rel="stylesheet" href="../demos.css">
+		<script>
+	$.widget( "custom.catcomplete", $.ui.autocomplete, {
+		_renderMenu: function( ul, items ) {
+			var that = this,
+				currentCategory = "";
+			$.each( items, function( index, item ) {
+				if ( item.category != currentCategory ) {
+					ul.append( "<li class='ui-autocomplete-category'>" + item.category + "</li>" );
+					currentCategory = item.category;
+				}
+				that._renderItemData( ul, item );
+			});
+		}
+	});
+	</script>
 	<script>
 	$(function() {
 		$( "#selections" ).accordion({
 			collapsible: true
 		});
 		
+		
+		$( "#sortable" ).sortable({
+			revert: true
+		});
+
+		$( "ul, li" ).disableSelection();
+		
+		
+		
 				$( "input[type=submit], a, button" )
 			.button()
 			.click(function( event ) {
 				event.preventDefault();
 			});
-	});
-	</script>
+			
+			var data = [
+			{ label: "anders", category: "" },
+			{ label: "andreas", category: "" },
+			{ label: "antal", category: "" },
+			{ label: "annhhx10", category: "Products" },
+			{ label: "annk K12", category: "Products" },
+			{ label: "annttop C13", category: "Products" },
+			{ label: "anders andersson", category: "People" },
+			{ label: "andreas andersson", category: "People" },
+			{ label: "andreas johnson", category: "People" }
+		];
+
+		$( "#search" ).catcomplete({
+			delay: 0,
+			source: data
+		});
+				$( "#datepicker" ).datepicker();
+		$( "#format" ).change(function() {
+			$( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
+		});
+		
+		
+			var progressbar = $( "#progressbar" ),
+			progressLabel = $( ".progress-label" );
+
+		progressbar.progressbar({
+			value: false,
+			change: function() {
+				progressLabel.text( progressbar.progressbar( "value" ) + "%" );
+			},
+			complete: function() {
+				progressLabel.text( "Complete!" );
+			}
+		});
+
+		function progress() {
+			var val = progressbar.progressbar( "value" ) || 0;
+
+			progressbar.progressbar( "value", val + 1 );
+
+			if ( val < 99 ) {
+				setTimeout( progress, 100 );
+			}
+		}
+
+		setTimeout( progress, 3000 );
+		
+		
+				$( "#selectable" ).selectable({
+			stop: function() {
+				var result = $( "#select-result" ).empty();
+				$( ".ui-selected", this ).each(function() {
+					var index = $( "#selectable li" ).index( this );
+					result.append( " #" + ( index + 1 ) );
+				});
+			}
+		});
 	
+	
+	
+	
+	
+	});
+	
+	
+	
+	
+	
+	</script>
 	
 	
 
@@ -36,28 +127,63 @@
 <div id="selections">
 	<h3>Trading Login</h3>
 	<div>
-
 <p>
-Username</p>
-<p>
-Password</p>
-<input type="submit" value="Submit">
+		<label for="username">Username: </label>
+<input id="Username"></p>
+<p>	
+	<label for="password">Password: </label>
+<input id="Username">
+<p><input type="submit" value="Submit"></p>
+</p>
 
-Orders, Order Ticket, Mobile Trading, Configuration
 		
 	</div>
 	<h3>Quotes, Charts, Trading</h3>
 	<div>
+		<label for="search">Search: </label>
+<input id="search">
+
 		<p>Scanners, Alerts, IB Market Brief </p>
+		<p>Date: <input type="text" id="datepicker" size="30"/></p>
+
+<p>Format options:<br />
+	<select id="format">
+		<option value="mm/dd/yy">Default - mm/dd/yy</option>
+		<option value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>
+		<option value="d M, y">Short - d M, y</option>
+		<option value="d MM, y">Medium - d MM, y</option>
+		<option value="DD, d MM, yy">Full - DD, d MM, yy</option>
+		<option value="'day' d 'of' MM 'in the year' yy">With text - 'day' d 'of' MM 'in the year' yy</option>
+	</select>
+</p>
 	</div>
 
 		<h3>Portfolio</h3>
 	<div>
 		<p>Portfolio, Portfolio News</p>
+		<ul id="sortable">
+	<li class="ui-state-default">AAPL</li>
+	<li class="ui-state-default">BIDU</li>
+	<li class="ui-state-default">MPC</li>
+	<li class="ui-state-default">PG</li>
+	<li class="ui-state-default">T</li>
+</ul>
+	
 	</div>
 			<h3>Account</h3>
 	<div>
-		<p>Account 1</p>
+	<p id="feedback">
+<span>You've selected:</span> <span id="select-result">none</span>.
+</p>
+
+<ol id="selectable">
+	<li class="ui-widget-content">Account 1</li>
+	<li class="ui-widget-content">Account 2</li>
+	<li class="ui-widget-content">Account 3</li>
+	<li class="ui-widget-content">Account 4</li>
+	<li class="ui-widget-content">Account 5</li>
+	<li class="ui-widget-content">Account 6</li>
+</ol>
 	</div>
 
 			<h3>Mobile Trading Assistant</h3>
@@ -75,8 +201,12 @@ Orders, Order Ticket, Mobile Trading, Configuration
 	</div>
 </div>
 
+<div id="progressbar"><div class="progress-label">Loading...</div></div>
 
-	
+
+
+
+
 
 
 
